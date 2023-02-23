@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
-import ClearIcon from '@mui/icons-material/Clear';
+import ClearIcon from "@mui/icons-material/Clear";
 
 import React from "react";
 import { InputBase } from "@mui/material";
@@ -28,7 +28,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   height: "100%",
   pointerEvents: "none",
   alignItems: "center",
-  cursor: 'pointer',
+  cursor: "pointer",
   justifyContent: "center",
 }));
 
@@ -41,37 +41,32 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 export default function SearchInput({ inputVal, setValue, handleEnter }) {
-    console.log(inputVal);
-    const clearInput=()=>{
-        setValue("");
-        inputVal=""
-    }
+  const clearInput = () => {
+    setValue("");
+    inputVal = "";
+  };
   return (
     <Box
       border={2}
       color="#000"
       borderColor="primary.button"
-      width="100%"
-      height="68%"
+      sx={{width: {md: '100%'}}}
       mx={2}
-      pb={1.5}
     >
       {" "}
       <Search onKeyDown={handleEnter}>
-        <SearchIconWrapper>
+        <SearchIconWrapper sx={{display: {xs: 'none', md: 'block'}}}>
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
           value={inputVal}
           onChange={(e) => setValue(e.target.value)}
-          sx={{ color: "#000", paddingBottom: "10px" }}
+          sx={{ color: "#000", paddingBottom: "10px", fontSize: {xs:'10px', md:'16px'} }}
           placeholder="warm, black voice actor, female, Morgan Freeman and more…"
           inputProps={{ "aria-label": "search" }}
         />
         {inputVal && (
-        //   <SearchIconWrapper sx={{zIndex: 9999999999}}>
-            <ClearIcon onClick={clearInput} sx={{mt: 1, cursor: "pointer"}}/>
-        //   </SearchIconWrapper>
+          <ClearIcon onClick={clearInput} sx={{ mt: 1, cursor: "pointer" }} />
         )}
       </Search>
     </Box>
