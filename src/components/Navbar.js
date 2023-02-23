@@ -42,7 +42,7 @@ export default function Navbar({
             <CustomButton
               title="Search"
               variant="contained"
-              searchKeyword={searchBtnAction}
+              onClick={searchBtnAction}
             />
           </Box>
         </Toolbar>

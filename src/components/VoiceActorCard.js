@@ -14,7 +14,7 @@ import { Divider } from "@mui/material";
 export default function VoiceActorCard({ actor }) {
   return (
     <React.Fragment>
-      <Card>
+      <Card sx={{textAlign: 'center'}}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <a
             href={`${process.env.REACT_APP_URL_LINK}${actor?.user?.username}`}

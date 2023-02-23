@@ -1,26 +1,35 @@
-import React from 'react'
+import { Box } from "@mui/material";
+import React from "react";
+import { CustomButton } from "./Button";
 
-export default function Pagination() {
-//     const url2 = 'https://babyduct-accounts-service.onrender.com/api/v1/registration/'
-//     const data = {
-//     username: "damilare",
-//     email: "dhrey@gmail.com",
-//     password1: "dhrey12345",
-//     password2: "dhrey12345"
-// }
-// console.log(data)
-//     fetch(url2, {
-//     method: 'POST',
-//     mode: 'no-cors',
-//     body: JSON.stringify(data),
-//     headers: {
-//         "Content-Type": "application/json",
-//         "Accept": "application/json"
-//     },
-// })
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
+export default function Pagination({ page, setPage }) {
   return (
-    <div>Pagination</div>
-  )
+    <Box display="flex" justifyContent="center" alignItems="center" py={1} mx="auto" width='max-content'>
+      <CustomButton
+        title="Previous"
+        variant="text"
+        size="small"
+        page={page === 1 ? true : false}
+        onClick={() => setPage(page -1)}
+      />
+      <Box>
+        {[1,2,3].map(btn=>(
+        <CustomButton 
+        key={btn}
+        size="small"
+        title={`${btn}`} 
+        variant={page === btn ? "outlined" : 'text'}
+        onClick={() => setPage(btn)} 
+        />
+        ))}
+      </Box>
+      <CustomButton
+        title="Next"
+        size="small"
+        variant="text"
+        page={page === 3 ? true : false}
+        onClick={() => setPage(page + 1)}
+      />
+    </Box>
+  );
 }

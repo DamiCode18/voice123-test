@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Container, Box, ThemeProvider, Typography } from "@mui/material/";
+import {
+  Container,
+  Box,
+  ThemeProvider,
+  Typography,
+  CircularProgress,
+} from "@mui/material/";
 import Grid from "@mui/material/Grid";
 import theme from "./theme";
 import Navbar from "./components/Navbar";
@@ -12,13 +18,20 @@ function App() {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const debouncedSearch = useDebounce(input, 800);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getAllActors(page, input);
-      setData(response.providers);
-      // setLoading()
+      try {
+        setLoading(true); // Set loading before sending API request
+        const response = await getAllActors(page, input);
+        setData(response.providers);
+        setLoading(false); // Stop loading
+      } catch (error) {
+        setLoading(false); // Stop loading in case of error
+        console.error(error);
+      }
     };
     fetchData().catch(console.error);
     //input is removed from the useEffect dependancy array and replaced by debouncedSearch,
@@ -59,27 +72,33 @@ function App() {
             >
               {data &&
                 data?.map((actor, index) => (
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    md={6}
-                    key={index}
-                    onClick={() => console.log(actor)}
-                  >
+                  <Grid item xs={12} sm={6} md={6} key={index} m="auto">
                     <VoiceActorCard actor={actor} />
                   </Grid>
                 ))}
-              {data?.length === 0 && (
+              {!loading && data?.length === 0 && (
                 <Box mt={20} mx="auto">
                   <Typography>No data available</Typography>
+                </Box>
+              )}
+              {loading && (
+                <Box
+                 mt={20}
+                 mx="auto"
+                >
+                  <CircularProgress
+                    sx={{
+                      height: 28,
+                      width: 28,
+                      color: "primary.button",
+                    }}
+                  />
                 </Box>
               )}
             </Grid>
           </Box>
           <Box
             height={50}
-            px={20}
             sx={{
               backgroundColor: "#f6f6f6",
               position: "fixed",
@@ -88,7 +107,7 @@ function App() {
               maxWidth: "1150px",
             }}
           >
-            <Pagination />
+            <Pagination page={page} setPage={setPage} />
           </Box>
         </Container>
       </Box>

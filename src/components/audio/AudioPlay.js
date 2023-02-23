@@ -52,6 +52,17 @@ const AudioPlay = ({ file }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // useEffect(() => {
+  //   return () => {
+  //     const duration = audioRef?.current?.duration;
+  //     const currentTime = audioRef.current?.currentTime;
+  //     const percentage = Math.floor((currentTime / duration) * 100);
+  //     console.log(percentage);
+  //   };
+  // }, []);
+
+  
+
   return (
     <Box
       bgcolor="#bdbdbd33"

@@ -1,12 +1,12 @@
 import Button from "@mui/material/Button";
 import React from "react";
 
-export const CustomButton = ({ title, variant, searchKeyword }) => {
+export const CustomButton = ({ title, variant, onClick, page, size }) => {
   return (
     <Button
-      onClick={searchKeyword}
-      size="large"
-      
+      onClick={onClick}
+      size={size}
+      disabled={page}
       sx={[
         {
           color: variant !== "text" ? "#fff" : "primary.button",
