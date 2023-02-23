@@ -20,9 +20,12 @@ function App() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
+  //debounced search hook call
   const debouncedSearch = useDebounce(input, 800);
-  useEffect(() => {
-    const fetchData = async () => {
+
+    //input is removed from the useEffect dependancy array and replaced by debouncedSearch,
+    //so that it only fetches new data not when input changes but after it has been debounced...
+     const fetchData = async () => {
       try {
         setLoading(true); // Set loading before sending API request
         const response = await getAllActors(page, input);
@@ -33,18 +36,14 @@ function App() {
         console.error(error);
       }
     };
+
+  useEffect(() => {
     fetchData().catch(console.error);
-    //input is removed from the useEffect dependancy array and replaced by debouncedSearch,
-    //so that it only fetches new data not when input changes but after it has been debounced...
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, debouncedSearch]);
 
   const handleOnClick = () => {
-    const fetchData = async () => {
-      const response = await getAllActors(page, input);
-      setData(response.providers);
-    };
-    fetchData();
+    fetchData().catch(console.error);
   };
 
   const handleEnterPress = (e) => {
@@ -70,7 +69,7 @@ function App() {
               spacing={{ xs: 2, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              {data &&
+              {!loading && data &&
                 data?.map((actor, index) => (
                   <Grid item xs={12} sm={6} md={6} key={index} m="auto">
                     <VoiceActorCard actor={actor} />
