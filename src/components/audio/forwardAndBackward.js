@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import IconButton from "@mui/material/IconButton";
-import Forward5Icon from "@mui/icons-material/Forward5";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
+import Forward10Icon from "@mui/icons-material/Forward10";
+import Replay10Icon from '@mui/icons-material/Replay10';
 
 const ForwardAndBackward = ({
   currentPlaying,
@@ -20,8 +20,8 @@ const ForwardAndBackward = ({
           }}
           onClick={() => callback(-skipDuration)}
         >
-          <SkipPreviousIcon
-            sx={{ height: 18, width: 18, color: "primary.button" }}
+          <Replay10Icon
+            sx={{ height: 28, width: 28, color: "primary.button" }}
           />
         </IconButton>
       )}
@@ -37,7 +37,7 @@ const ForwardAndBackward = ({
           }}
           onClick={() => callback(skipDuration)}
         >
-          <Forward5Icon
+          <Forward10Icon
             sx={{ height: 28, width: 28, color: "primary.button" }}
           />
         </IconButton>

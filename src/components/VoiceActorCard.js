@@ -5,7 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { CustomButton } from "./Button";
 import { Box } from "@mui/system";
 import AudioPlay from "./audio/AudioPlay";
@@ -30,7 +30,7 @@ export default function VoiceActorCard({ actor }) {
             <Box pl={2}>
               <Typography sx={{ display: "flex", width: "100%" }} pt={2}>
                 <Avatar
-                  src={actor?.user?.picture_medium}
+                  src={actor?.user?.picture_large}
                   alt="avatar"
                   sx={{ width: 40, height: 40 }}
                 />
@@ -38,7 +38,7 @@ export default function VoiceActorCard({ actor }) {
                   {actor?.user?.name}
                 </Typography>
               </Typography>
-              <Box pl={4} mt={2}>
+              <Box mt={2}>
                 <Typography fontSize={14}>Last active</Typography>
                 <Typography fontSize={13}>10 hours ago</Typography>
               </Box>
@@ -78,7 +78,7 @@ export default function VoiceActorCard({ actor }) {
         <Divider sx={{ border: 1, borderColor: "#bdbdbd33" }} />
         <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+            <FavoriteBorderIcon sx={{color: "primary.button"}} />
           </IconButton>
           <Box display="flex" justifyContent="end">
             <CustomButton title="BOOK NOW" variant="text" />
