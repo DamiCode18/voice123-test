@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Box, ThemeProvider } from "@mui/material/";
+import { Container, Box, ThemeProvider } from "@mui/material/";
+import Grid from "@mui/material/Grid";
 import theme from "./theme";
 import Navbar from "./components/Navbar";
 import { getAllActors } from "./API/listActors/listActors";
 import { useDebounce } from "./utils/useDebounce";
+import VoiceActorCard from "./components/VoiceActorCard";
+import Pagination from "./components/Pagination";
 
 function App() {
   const [page, setPage] = useState(1);
@@ -46,6 +49,32 @@ function App() {
           searchBtnAction={handleOnClick}
           handleEnter={handleEnterPress}
         />
+          <Container>
+          <Box sx={{ flexGrow: 1, marginBottom: 8 }}>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              {data &&
+                data?.map((actor, index) => (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={6}
+                    key={index}
+                    onClick={() => console.log(actor)}
+                  >
+                    <VoiceActorCard actor={actor} />
+                  </Grid>
+                ))}
+            </Grid>
+          </Box>
+          <Box height={50} px={20} sx={{backgroundColor: '#f6f6f6', position: 'fixed', bottom: 0, width: '100%', maxWidth: '1150px'}}>
+          <Pagination />
+          </Box>
+        </Container>
       </Box>
     </ThemeProvider>
   );

@@ -4,11 +4,16 @@ import SearchInput from "../components/SearchInput";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Toolbar, Box, IconButton, Divider } from "@mui/material/";
 
-export default function Navbar({ input, setInput, searchBtnAction, handleEnter }) {
+export default function Navbar({
+  input,
+  setInput,
+  searchBtnAction,
+  handleEnter,
+}) {
   return (
-    <Box sx={{ marginBottom: "150px" }}>
+    <Box sx={{ marginBottom: "80px" }}>
       <AppBar
-        sx={{ backgroundColor: "#f6f6f6", display: "flex", height: "130px" }}
+        sx={{ backgroundColor: "#f6f6f6", display: "flex", height: "65px" }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
@@ -22,10 +27,14 @@ export default function Navbar({ input, setInput, searchBtnAction, handleEnter }
           </IconButton>
           <img
             style={{ height: "28px", width: "95px" }}
-            src="https://voice123.com/static/logo-branded-v123.png"
+            src={`${process.env.REACT_APP_URL_LINK}static/logo-branded-v123.png`}
             alt="voice123_logo"
           />
-          <SearchInput inputVal={input} setValue={setInput} handleEnter={handleEnter} />
+          <SearchInput
+            inputVal={input}
+            setValue={setInput}
+            handleEnter={handleEnter}
+          />
           <CustomButton
             title="Search"
             variant="contained"
