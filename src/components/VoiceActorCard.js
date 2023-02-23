@@ -56,7 +56,7 @@ export default function VoiceActorCard({ actor }) {
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <AudioPlay file={actor} />
             <a
-              href={`${process.env.REACT_APP_URL_LINK}/${actor?.user?.username}`}
+              href={`${process.env.REACT_APP_URL_LINK}${actor?.user?.username}`}
               target="_blank"
               rel="noreferrer"
               style={{ textDecoration: "none", color: "inherit" }}
