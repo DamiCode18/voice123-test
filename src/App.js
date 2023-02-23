@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Box, ThemeProvider } from "@mui/material/";
+import { Container, Box, ThemeProvider, Typography } from "@mui/material/";
 import Grid from "@mui/material/Grid";
 import theme from "./theme";
 import Navbar from "./components/Navbar";
@@ -18,6 +18,7 @@ function App() {
     const fetchData = async () => {
       const response = await getAllActors(page, input);
       setData(response.providers);
+      // setLoading()
     };
     fetchData().catch(console.error);
     //input is removed from the useEffect dependancy array and replaced by debouncedSearch,
@@ -49,7 +50,7 @@ function App() {
           searchBtnAction={handleOnClick}
           handleEnter={handleEnterPress}
         />
-          <Container>
+        <Container>
           <Box sx={{ flexGrow: 1, marginBottom: 8 }}>
             <Grid
               container
@@ -69,10 +70,25 @@ function App() {
                     <VoiceActorCard actor={actor} />
                   </Grid>
                 ))}
+              {data?.length === 0 && (
+                <Box mt={20} mx="auto">
+                  <Typography>No data available</Typography>
+                </Box>
+              )}
             </Grid>
           </Box>
-          <Box height={50} px={20} sx={{backgroundColor: '#f6f6f6', position: 'fixed', bottom: 0, width: '100%', maxWidth: '1150px'}}>
-          <Pagination />
+          <Box
+            height={50}
+            px={20}
+            sx={{
+              backgroundColor: "#f6f6f6",
+              position: "fixed",
+              bottom: 0,
+              width: "100%",
+              maxWidth: "1150px",
+            }}
+          >
+            <Pagination />
           </Box>
         </Container>
       </Box>

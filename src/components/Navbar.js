@@ -2,7 +2,7 @@ import React from "react";
 import { CustomButton } from "../components/Button";
 import SearchInput from "../components/SearchInput";
 import MenuIcon from "@mui/icons-material/Menu";
-import { AppBar, Toolbar, Box, IconButton, Divider, Typography } from "@mui/material/";
+import { AppBar, Toolbar, Box, IconButton, Divider } from "@mui/material/";
 
 export default function Navbar({
   input,
