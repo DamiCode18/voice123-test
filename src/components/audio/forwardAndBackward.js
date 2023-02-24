@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import IconButton from "@mui/material/IconButton";
 import Forward10Icon from "@mui/icons-material/Forward10";
-import Replay10Icon from '@mui/icons-material/Replay10';
+import Replay10Icon from "@mui/icons-material/Replay10";
 
 const ForwardAndBackward = ({
   currentPlaying,

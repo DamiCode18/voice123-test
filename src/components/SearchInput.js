@@ -51,18 +51,24 @@ export default function SearchInput({ inputVal, setValue, handleEnter }) {
       border={2}
       color="#000"
       borderColor="primary.button"
-      sx={{width: {md: '100%'}}}
+      height={40}
+      sx={{ width: { md: "100%" } }}
       mx={2}
     >
       {" "}
       <Search onKeyDown={handleEnter}>
-        <SearchIconWrapper sx={{display: {xs: 'none', md: 'block'}}}>
+        <SearchIconWrapper sx={{ display: { xs: "none", md: "block" } }}>
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
           value={inputVal}
           onChange={(e) => setValue(e.target.value)}
-          sx={{ color: "#000", paddingBottom: "10px", fontSize: {xs:'10px', md:'16px'} }}
+          sx={{
+            color: "#000",
+            paddingBottom: {md: "15px"},
+            paddingTop: {xs: "10px", md: '2px'},
+            fontSize: { xs: "10px", md: "16px" },
+          }}
           placeholder="warm, black voice actor, female, Morgan Freeman and more…"
           inputProps={{ "aria-label": "search" }}
         />
@@ -73,8 +79,6 @@ export default function SearchInput({ inputVal, setValue, handleEnter }) {
     </Box>
   );
 }
-
-
 
 SearchInput.propTypes = {
   inputVal: PropTypes.string,

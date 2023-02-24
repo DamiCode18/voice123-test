@@ -82,7 +82,7 @@ const AudioPlay = ({ file }) => {
 };
 
 AudioPlay.propTypes = {
-  file: PropTypes.string.isRequired
+  file: PropTypes.string.isRequired,
 };
 
 export default AudioPlay;

@@ -6,7 +6,7 @@ import Avatar from "@mui/material/Avatar";
 import PropTypes from "prop-types";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { CustomButton } from "./Button";
 import { Box } from "@mui/system";
 import AudioPlay from "./audio/AudioPlay";
@@ -15,7 +15,7 @@ import { Divider } from "@mui/material";
 export default function VoiceActorCard({ actor }) {
   return (
     <React.Fragment>
-      <Card sx={{textAlign: 'center'}}>
+      <Card sx={{ textAlign: "center" }}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <a
             href={`${process.env.REACT_APP_URL_LINK}${actor?.user?.username}`}
@@ -79,7 +79,7 @@ export default function VoiceActorCard({ actor }) {
         <Divider sx={{ border: 1, borderColor: "#bdbdbd33" }} />
         <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton aria-label="add to favorites">
-            <FavoriteBorderIcon sx={{color: "primary.button"}} />
+            <FavoriteBorderIcon sx={{ color: "primary.button" }} />
           </IconButton>
           <Box display="flex" justifyContent="end">
             <CustomButton title="BOOK NOW" variant="text" />

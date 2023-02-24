@@ -11,7 +11,7 @@ export const CustomButton = ({ title, variant, onClick, page, size }) => {
       sx={[
         {
           color: variant !== "text" ? "#fff" : "primary.button",
-          backgroundColor: variant !== "text" && "primary.button"
+          backgroundColor: variant !== "text" && "primary.button",
         },
         variant !== "text" && {
           "&:hover": {
@@ -32,5 +32,5 @@ CustomButton.propTypes = {
   variant: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   page: PropTypes.bool,
-  size: PropTypes.string
-}
+  size: PropTypes.string,
+};
