@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Box } from "@mui/system";
 import PauseAndPlay from "./pauseAndPlay";
 import ForwardAndBackward from "./forwardAndBackward";
@@ -16,7 +17,7 @@ const AudioPlay = ({ file }) => {
 
     // if it's playing for the first time, initiate audio downlaod
     if (!isPlaying && !audioRef.current) {
-      audioRef.current = new Audio(file?.relevant_sample?.file);
+      audioRef.current = new Audio(file);
       audioRef.current.onloadstart = () => setAudioDownloading(true);
       audioRef.current.oncanplaythrough = () => setAudioDownloading(false);
       audioRef.current.onerror = () => setAudioDownloading(false);
@@ -52,17 +53,6 @@ const AudioPlay = ({ file }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   return () => {
-  //     const duration = audioRef?.current?.duration;
-  //     const currentTime = audioRef.current?.currentTime;
-  //     const percentage = Math.floor((currentTime / duration) * 100);
-  //     console.log(percentage);
-  //   };
-  // }, []);
-
-  
-
   return (
     <Box
       bgcolor="#bdbdbd33"
@@ -82,15 +72,17 @@ const AudioPlay = ({ file }) => {
           <PauseAndPlay showPlay={audioIsPlaying} callback={handleAudioState} />
         </ForwardAndBackward>
       )}
-      {audioDownloading ? (
+      {audioDownloading && (
         <CircularProgress
           sx={{ height: 38, width: 38, color: "primary.button" }}
         />
-      ) : (
-        ""
       )}
     </Box>
   );
+};
+
+AudioPlay.propTypes = {
+  file: PropTypes.string.isRequired
 };
 
 export default AudioPlay;

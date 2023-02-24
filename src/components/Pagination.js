@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
+import PropTypes from "prop-types";
 import { CustomButton } from "./Button";
 
 export default function Pagination({ page, setPage }) {
@@ -33,3 +34,8 @@ export default function Pagination({ page, setPage }) {
     </Box>
   );
 }
+
+Pagination.propTypes = {
+  page: PropTypes.number,
+  setPage: PropTypes.func
+};

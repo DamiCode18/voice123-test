@@ -1,5 +1,6 @@
 import React from "react";
 import { CustomButton } from "../components/Button";
+import PropTypes from "prop-types";
 import SearchInput from "../components/SearchInput";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Toolbar, Box, IconButton, Divider } from "@mui/material/";
@@ -11,11 +12,24 @@ export default function Navbar({
   handleEnter,
 }) {
   return (
-    <Box sx={{ marginBottom: { xs: '100px', md: "80px" } }}>
+    <Box sx={{ marginBottom: { xs: "100px", md: "80px" } }}>
       <AppBar
-        sx={{ backgroundColor: "#f6f6f6", display: "flex", height: { xs: '90px', md: "65px" } }}
+        sx={{
+          backgroundColor: "#f6f6f6",
+          display: "flex",
+          height: { xs: "90px", md: "65px" },
+        }}
       >
-        <Toolbar sx={{ display: { xs: "block", md: 'flex', justifyContent: "space-between", alignItems: 'center' } }}>
+        <Toolbar
+          sx={{
+            display: {
+              xs: "block",
+              md: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            },
+          }}
+        >
           <IconButton
             size="large"
             edge="start"
@@ -38,7 +52,7 @@ export default function Navbar({
             setValue={setInput}
             handleEnter={handleEnter}
           />
-          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+          <Box sx={{ display: { xs: "none", md: "block" } }}>
             <CustomButton
               title="Search"
               variant="contained"
@@ -51,3 +65,10 @@ export default function Navbar({
     </Box>
   );
 }
+
+Navbar.propTypes = {
+  input: PropTypes.string,
+  setInput: PropTypes.func,
+  searchBtnAction: PropTypes.func,
+  handleEnter: PropTypes.func,
+};

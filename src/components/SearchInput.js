@@ -1,6 +1,7 @@
 import { Box } from "@mui/system";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
+import PropTypes from "prop-types";
 import ClearIcon from "@mui/icons-material/Clear";
 
 import React from "react";
@@ -72,3 +73,11 @@ export default function SearchInput({ inputVal, setValue, handleEnter }) {
     </Box>
   );
 }
+
+
+
+SearchInput.propTypes = {
+  inputVal: PropTypes.string,
+  setVal: PropTypes.func,
+  handleEnter: PropTypes.func,
+};

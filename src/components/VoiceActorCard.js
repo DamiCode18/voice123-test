@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
+import PropTypes from "prop-types";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -54,7 +55,7 @@ export default function VoiceActorCard({ actor }) {
             </Box>
           </a>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <AudioPlay file={actor} />
+            <AudioPlay file={actor?.relevant_sample?.file} />
             <a
               href={`${process.env.REACT_APP_URL_LINK}${actor?.user?.username}`}
               target="_blank"
@@ -89,3 +90,7 @@ export default function VoiceActorCard({ actor }) {
     </React.Fragment>
   );
 }
+
+VoiceActorCard.propTypes = {
+  actor: PropTypes.object.isRequired,
+};
